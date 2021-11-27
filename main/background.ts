@@ -2,6 +2,8 @@
 
 import { app } from 'electron'
 import serve from 'electron-serve'
+import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from 'electron-devtools-installer'
+
 import { createWindow } from './helpers'
 
 const isProd: boolean = process.env.NODE_ENV === 'production'
@@ -12,8 +14,23 @@ if (isProd) {
   app.setPath('userData', `${app.getPath('userData')} (development)`)
 }
 
-;(async () => {
-  await app.whenReady()
+const installExtensions = async () => {
+  const installer = require('electron-devtools-installer')
+  const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS']
+  const forceDownload = !!process.env.UPGRADE_EXTENSIONS
+  for (const name of extensions) {
+    try {
+      await installer.default(installer[name], forceDownload)
+    } catch (e) {
+      console.log(`Error installing ${name} extension: ${e.message}`)
+    }
+  }
+}
+
+app.on('ready', async () => {
+  if (!isProd) {
+    await installExtensions()
+  }
 
   const mainWindow = createWindow('main', {
     width: 1000,
@@ -27,7 +44,7 @@ if (isProd) {
     await mainWindow.loadURL(`http://localhost:${port}/pi`)
     mainWindow.webContents.openDevTools()
   }
-})()
+})
 
 app.on('window-all-closed', () => {
   app.quit()
