@@ -2,7 +2,6 @@
 
 import { app } from 'electron'
 import serve from 'electron-serve'
-import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from 'electron-devtools-installer'
 
 import { createWindow } from './helpers'
 

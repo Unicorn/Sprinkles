@@ -12,7 +12,7 @@ interface Props {
   cancelHandler: (e: SyntheticEvent<HTMLButtonElement>) => void
 }
 
-const CheckoutModule: FC<Props> = () => {
+const CheckoutModule: FC<Props> = ({ confirmHandler, cancelHandler }) => {
   return (
     <animated.div className={styles.modal} style={useSpring({ opacity: 1 })}>
       <div className={styles.columns}>

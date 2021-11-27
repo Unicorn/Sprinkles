@@ -16,6 +16,7 @@
     "@fontsource/mate-sc": "^4.5.0",
     "@fontsource/material-icons": "^4.5.0",
     "@fontsource/roboto": "^4.5.1",
+    "@microblink/blinkid-in-browser-sdk": "^5.14.2",
     "@mui/icons-material": "^5.2.0",
     "@mui/lab": "^5.0.0-alpha.57",
     "@mui/material": "^5.2.1",
@@ -27,6 +28,7 @@
     "konva": "^8.3.0",
     "react-konva": "^17.0.2-5",
     "react-redux": "^7.2.6",
+    "react-singleton-hook": "^3.2.1",
     "square": "^16.0.0",
     "uuid": "^8.3.2"
   },

@@ -8,7 +8,7 @@ import { Button } from '@mui/material'
 
 import styles from '@/styles/modules/auth.module.css'
 import { parseLicense, License } from 'client/helpers/licenseParser'
-import useFocus, { useAppDispatch, useAppSelector } from 'client/helpers/reactHooks'
+import { useFocus, useAppDispatch, useAppSelector } from 'client/helpers/reactHooks'
 import { searchCustomerByLicense, selectCustomer } from '@/controllers/customerController'
 import animations from '@/styles/global.animations'
 

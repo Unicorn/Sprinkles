@@ -77,7 +77,7 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
   }
   win = new BrowserWindow(browserOptions)
 
-  // win.setKiosk(true)
+  win.setKiosk(true)
 
   win.on('close', saveState)
 

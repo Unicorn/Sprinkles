@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState, SyntheticEvent } from 'react'
+import React, { useState, SyntheticEvent, useEffect } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -12,6 +12,7 @@ import styles from '@/styles/pages/home.module.css'
 import animations from '@/styles/pages/home.animations'
 import { clear } from '@/controllers/customerController'
 import { useAppDispatch } from '@/helpers/reactHooks'
+import { useBlink } from '@/helpers/blinkHooks'
 import HamburgerMenu from '@/views/ui/buttons/HamburgerMenu'
 import AuthModule from '@/views/modules/AuthModule'
 import CheckoutModule from '@/views/modules/CheckoutModule'
@@ -24,17 +25,28 @@ const Home: NextPage = () => {
   const dispatch = useAppDispatch()
   const [_showAuth, _setShowAuth] = useState<boolean>(false)
   const [_showCheckout, _setShowCheckout] = useState<boolean>(false)
+  // const blink = useBlink()
 
-  const _confirmHandler = (e: SyntheticEvent<HTMLButtonElement>): void => {
+  const _authConfirm = (e: SyntheticEvent<HTMLButtonElement>): void => {
     e.preventDefault()
     _setShowAuth(false)
     _setShowCheckout(true)
   }
 
-  const _cancelHandler = (e: SyntheticEvent<HTMLButtonElement>): void => {
+  const _authCancel = (e: SyntheticEvent<HTMLButtonElement>): void => {
     e.preventDefault()
     _setShowAuth(false)
     dispatch(clear())
+  }
+
+  const _checkoutConfirm = (e: SyntheticEvent<HTMLButtonElement>): void => {
+    e.preventDefault()
+    _setShowCheckout(false)
+  }
+
+  const _checkoutCancel = (e: SyntheticEvent<HTMLButtonElement>): void => {
+    e.preventDefault()
+    _setShowCheckout(false)
   }
 
   return (
@@ -52,8 +64,8 @@ const Home: NextPage = () => {
         <HamburgerMenu />
       </header>
 
-      {_showAuth && <AuthModule confirmHandler={_confirmHandler} cancelHandler={_cancelHandler} />}
-      {_showCheckout && <CheckoutModule />}
+      {_showAuth && <AuthModule confirmHandler={_authConfirm} cancelHandler={_authCancel} />}
+      {_showCheckout && <CheckoutModule confirmHandler={_checkoutConfirm} cancelHandler={_checkoutCancel} />}
 
       <main className={styles.main}>
         <div className={styles.brand}>

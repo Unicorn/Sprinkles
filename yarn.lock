@@ -1293,6 +1293,11 @@
     prop-types "^15.7.2"
     react-is "^16.8.0 || ^17.0.0"
 
+"@microblink/blinkid-in-browser-sdk@^5.14.2":
+  version "5.14.2"
+  resolved "https://registry.yarnpkg.com/@microblink/blinkid-in-browser-sdk/-/blinkid-in-browser-sdk-5.14.2.tgz#b562c5e037cef90e3fc9d9cc91baf2b8d02c625f"
+  integrity sha512-uByDvwYiGSIOpS8w8Ue4bxgKaY/FJPj7jDVFJtXSkd2SVcmN7/hHtCCIbuzdFXrXXbSlHUbElTsP2L6/jxWu4w==
+
 "@mui/base@5.0.0-alpha.57":
   version "5.0.0-alpha.57"
   resolved "https://registry.yarnpkg.com/@mui/base/-/base-5.0.0-alpha.57.tgz#1f9bc74da67eec8fbad54402b28c1356ec7c53ae"
@@ -4990,6 +4995,11 @@ react-refresh@0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
+
+react-singleton-hook@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/react-singleton-hook/-/react-singleton-hook-3.2.1.tgz#018dcf05e889bba592be44b505122c2ac732b05d"
+  integrity sha512-t5SBuBerSbW3rGcDk9gy9hJl7CYk+Iunfzb3V3C0vYgtdXDSpc56u5oa2URoWAgSOa7/3veaEb6hyv7XxC1PCg==
 
 react-transition-group@^4.4.0, react-transition-group@^4.4.2:
   version "4.4.2"

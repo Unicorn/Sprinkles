@@ -46,7 +46,7 @@ export const useInterval = (callback: Function, delay: number) => {
 export const useAppDispatch = () => useDispatch<AppDispatch>()
 export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector
 
-const useFocus = (): [any, () => void] => {
+export const useFocus = (): [any, () => void] => {
   const htmlElRef: MutableRefObject<any> = useRef(null)
   const setFocus = (): void => {
     htmlElRef?.current?.focus?.()
@@ -54,5 +54,3 @@ const useFocus = (): [any, () => void] => {
 
   return [htmlElRef, setFocus]
 }
-
-export default useFocus
