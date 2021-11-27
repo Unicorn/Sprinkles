@@ -1,11 +1,12 @@
 /** @format */
 
-import React, { FC, SyntheticEvent, useState, useRef } from 'react'
+import React, { FC, SyntheticEvent, useState } from 'react'
 import { animated, useSpring } from '@react-spring/web'
 
 import styles from '@/styles/modules/auth.module.css'
 import { parseLicense, License } from 'client/helpers/licenseParser'
-import useFocus from 'client/helpers/reactHooks'
+import useFocus, { useAppDispatch, useAppSelector } from 'client/helpers/reactHooks'
+import { fetchCustomerByLicense, selectCustomer } from '@/controllers/customerController'
 
 interface Props {
   confirmHandler: (e: SyntheticEvent<HTMLButtonElement>) => void
@@ -13,22 +14,27 @@ interface Props {
 }
 
 const AuthModule: FC<Props> = ({ confirmHandler, cancelHandler }) => {
+  const dispatch = useAppDispatch()
+  const customer = useAppSelector(selectCustomer)
+
   const [_license, _setLicense] = useState<License | null>(null)
   const [_magData, _setMagData] = useState<string>('')
   const [_inputRef, _setInputFocus] = useFocus()
 
   const _magHandler = (e: SyntheticEvent<HTMLInputElement>): void => {
-    _setMagData(e.currentTarget.value)
-    _setLicense(parseLicense(e.currentTarget.value))
+    const val = e.currentTarget.value
+    const license = parseLicense(val)
+    _setMagData(val)
+    _setLicense(license)
+
+    if (license && license.num.length === 12) dispatch(fetchCustomerByLicense(license))
   }
 
   return (
     <div className={styles.modal} onClick={() => _setInputFocus()}>
       <div className={styles.columns}>
         <div className={styles.left}>
-          <h2 className={styles.h2}>
-            <span>SWIPE YOUR STATE ID</span>
-          </h2>
+          <h2 className={styles.h2}>SWIPE YOUR STATE ID</h2>
 
           <animated.div className="help info">
             <p>If you have an active membership or want a day pass, we will need to verify your identity using your state-issued ID.</p>

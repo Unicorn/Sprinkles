@@ -1,6 +1,6 @@
 /** @format */
 
-import { useState } from 'react'
+import { useState, SyntheticEvent } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -11,7 +11,7 @@ import styles from '@/styles/pages/home.module.css'
 import animations from 'client/styles/pages/home.animations'
 import HamburgerMenu from 'client/views/ui/buttons/HamburgerMenu'
 import AuthModule from 'client/views/modules/AuthModule'
-import { SyntheticEvent } from 'react-transition-group/node_modules/@types/react'
+import CheckoutModule from 'client/views/modules/CheckoutModule'
 
 const Squares = dynamic(() => import('client/views/canvas/Squares'), {
   ssr: false,
@@ -19,10 +19,12 @@ const Squares = dynamic(() => import('client/views/canvas/Squares'), {
 
 const Home: NextPage = () => {
   const [_showAuth, _setShowAuth] = useState<boolean>(false)
+  const [_showCheckout, _setShowCheckout] = useState<boolean>(false)
 
   const _confirmHandler = (e: SyntheticEvent<HTMLButtonElement>): void => {
     e.preventDefault()
     _setShowAuth(false)
+    _setShowCheckout(true)
   }
 
   const _cancelHandler = (e: SyntheticEvent<HTMLButtonElement>): void => {
@@ -39,11 +41,14 @@ const Home: NextPage = () => {
         <link rel="preload" href="fonts/RousseauDeco-Bold.woff2" as="font" type="font/woff2" crossOrigin="crossOrigin" />
       </Head>
 
+      <Squares />
+
       <header className="global-header">
         <HamburgerMenu />
       </header>
 
       {_showAuth && <AuthModule confirmHandler={_confirmHandler} cancelHandler={_cancelHandler} />}
+      {_showCheckout && <CheckoutModule />}
 
       <main className={styles.main}>
         <div className={styles.brand}>
@@ -63,13 +68,13 @@ const Home: NextPage = () => {
         </div>
 
         <animated.div className={styles.actions} style={useSpring(animations.auth)}>
-          <button className="primary button" onClick={() => _setShowAuth(!_showAuth)}>
-            Get Access
-          </button>
+          <div className={styles.container}>
+            <button className="primary button" onClick={() => _setShowAuth(!_showAuth)}>
+              Get Access
+            </button>
+          </div>
         </animated.div>
       </main>
-
-      <Squares />
     </>
   )
 }
