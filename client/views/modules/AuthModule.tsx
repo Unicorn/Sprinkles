@@ -2,16 +2,29 @@
 
 import React, { FC, SyntheticEvent, useState } from 'react'
 import { animated, useSpring } from '@react-spring/web'
+import { LoadingButton } from '@mui/lab'
+import { Check } from '@mui/icons-material'
+import { Button } from '@mui/material'
 
 import styles from '@/styles/modules/auth.module.css'
 import { parseLicense, License } from 'client/helpers/licenseParser'
 import useFocus, { useAppDispatch, useAppSelector } from 'client/helpers/reactHooks'
-import { fetchCustomerByLicense, selectCustomer } from '@/controllers/customerController'
+import { searchCustomerByLicense, selectCustomer } from '@/controllers/customerController'
+import animations from '@/styles/global.animations'
 
 interface Props {
   confirmHandler: (e: SyntheticEvent<HTMLButtonElement>) => void
   cancelHandler: (e: SyntheticEvent<HTMLButtonElement>) => void
 }
+
+const formattedLicense = (num: string) => (
+  <>
+    <span>{num.slice(0, 3)}</span>
+    <span>{num.slice(3, 6)}</span>
+    <span>{num.slice(6, 9)}</span>
+    <span>{num.slice(9, 12)}</span>
+  </>
+)
 
 const AuthModule: FC<Props> = ({ confirmHandler, cancelHandler }) => {
   const dispatch = useAppDispatch()
@@ -27,14 +40,14 @@ const AuthModule: FC<Props> = ({ confirmHandler, cancelHandler }) => {
     _setMagData(val)
     _setLicense(license)
 
-    if (license && license.num.length === 12) dispatch(fetchCustomerByLicense(license))
+    if (license && license.num.length === 12) dispatch(searchCustomerByLicense(license))
   }
 
   return (
-    <div className={styles.modal} onClick={() => _setInputFocus()}>
+    <animated.div className={styles.modal} style={useSpring(animations.modal)} onClick={() => _setInputFocus()}>
       <div className={styles.columns}>
         <div className={styles.left}>
-          <h2 className={styles.h2}>SWIPE YOUR STATE ID</h2>
+          <p className={styles.title}>SWIPE YOUR STATE ID</p>
 
           <animated.div className="help info">
             <p>If you have an active membership or want a day pass, we will need to verify your identity using your state-issued ID.</p>
@@ -59,11 +72,7 @@ const AuthModule: FC<Props> = ({ confirmHandler, cancelHandler }) => {
               <span className={styles.type}>Driver License</span>
             </header>
             <div className={styles.info}>
-              <span className={styles.num}>
-                {_license?.num
-                  ? `${_license.num.slice(0, 3)} ${_license.num.slice(3, 6)} ${_license.num.slice(6, 9)} ${_license.num.slice(9, 12)}`
-                  : 'XXX XXX XXX XXX'}
-              </span>
+              <span className={styles.num}>{formattedLicense(_license?.num || 'XXXXXXXXXXXX')}</span>
               <span className={styles.dob}>
                 <strong>DOB:</strong> {_license?.dob ? `${_license.dob.month}/${_license.dob.day}/${_license.dob.year}` : 'XX/XX/XXXX'}
               </span>
@@ -77,20 +86,25 @@ const AuthModule: FC<Props> = ({ confirmHandler, cancelHandler }) => {
 
       <footer className={styles.footer}>
         <div className={styles.container}>
-          <animated.button
-            className="action confirm"
+          <LoadingButton
+            color="success"
             disabled={!_license?.num}
-            style={useSpring({ opacity: _license?.num ? 1 : 0 })}
+            loading={customer.status === 'loading'}
+            loadingPosition="start"
             onClick={confirmHandler}
+            size="large"
+            startIcon={<Check />}
+            variant="contained"
           >
             Confirm
-          </animated.button>
-          <button className="action cancel" onClick={cancelHandler}>
+          </LoadingButton>
+
+          <Button size="large" variant="contained" color="error" onClick={cancelHandler}>
             Cancel
-          </button>
+          </Button>
         </div>
       </footer>
-    </div>
+    </animated.div>
   )
 }
 

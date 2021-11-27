@@ -1,21 +1,25 @@
 /** @format */
 
-import { FC } from 'react'
+import { FC, SyntheticEvent } from 'react'
 import { animated, useSpring } from '@react-spring/web'
 import Image from 'next/image'
+import { Button } from '@mui/material'
 
 import styles from '@/styles/modules/auth.module.css'
 
-interface Props {}
+interface Props {
+  confirmHandler: (e: SyntheticEvent<HTMLButtonElement>) => void
+  cancelHandler: (e: SyntheticEvent<HTMLButtonElement>) => void
+}
 
 const CheckoutModule: FC<Props> = () => {
   return (
-    <div className={styles.modal}>
+    <animated.div className={styles.modal} style={useSpring({ opacity: 1 })}>
       <div className={styles.columns}>
         <div className={styles.left}>
-          <h2 className={styles.h2}>Create a subscription</h2>
+          <h2 className={styles.title}>Create a subscription</h2>
 
-          <animated.div className="help info">
+          <div className="help info">
             <p>
               We could not find a subscription with that license number. Don't worry, you can create a subscription by scanning the QR code
               on your phone or typing this link into your browser:
@@ -27,21 +31,26 @@ const CheckoutModule: FC<Props> = () => {
               Monthly subscriptions can be managed and cancelled through the email you sign up with, or by talking to our staff during
               business hours.
             </p>
-          </animated.div>
+          </div>
         </div>
 
         <div className={styles.right}>
-          <Image src="/images/sq-subscription-basic.png" alt="A unicorn featuring a gorgeous and long mane" width="400" height="400" />
+          <Image src="/images/sq-subscription-basic.png" alt="A unicorn featuring a gorgeous and long mane" width="200" height="200" />
         </div>
       </div>
 
       <footer className={styles.footer}>
         <div className={styles.container}>
-          <animated.button className="action confirm">Confirm</animated.button>
-          <button className="action cancel">Cancel</button>
+          <Button color="success" onClick={confirmHandler} size="large" variant="contained">
+            Next
+          </Button>
+
+          <Button size="large" variant="contained" color="error" onClick={cancelHandler}>
+            Cancel
+          </Button>
         </div>
       </footer>
-    </div>
+    </animated.div>
   )
 }
 

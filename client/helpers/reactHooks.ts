@@ -44,7 +44,6 @@ export const useInterval = (callback: Function, delay: number) => {
 
 // Use throughout your app instead of plain `useDispatch` and `useSelector`
 export const useAppDispatch = () => useDispatch<AppDispatch>()
-
 export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector
 
 const useFocus = (): [any, () => void] => {

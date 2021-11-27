@@ -1,5 +1,7 @@
 /** @format */
 
+import { createTheme } from '@material-ui/core/styles'
+
 export const colors = {
   black: '#2b3240',
   brick: '#984018',
@@ -24,3 +26,20 @@ export const colors = {
   ocean: '#34538c',
   sailboat: '#4771bf',
 }
+
+export const theme = createTheme({
+  palette: {
+    primary: {
+      main: colors.indigo,
+    },
+    secondary: {
+      main: colors.bunny,
+    },
+    error: {
+      main: colors.brick,
+    },
+    background: {
+      default: colors.lightest,
+    },
+  },
+})

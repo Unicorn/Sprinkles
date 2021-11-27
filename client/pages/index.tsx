@@ -1,23 +1,27 @@
 /** @format */
 
-import { useState, SyntheticEvent } from 'react'
+import React, { useState, SyntheticEvent } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import { animated, useSpring } from '@react-spring/web'
+import { Button } from '@mui/material'
 
 import styles from '@/styles/pages/home.module.css'
-import animations from 'client/styles/pages/home.animations'
-import HamburgerMenu from 'client/views/ui/buttons/HamburgerMenu'
-import AuthModule from 'client/views/modules/AuthModule'
-import CheckoutModule from 'client/views/modules/CheckoutModule'
+import animations from '@/styles/pages/home.animations'
+import { clear } from '@/controllers/customerController'
+import { useAppDispatch } from '@/helpers/reactHooks'
+import HamburgerMenu from '@/views/ui/buttons/HamburgerMenu'
+import AuthModule from '@/views/modules/AuthModule'
+import CheckoutModule from '@/views/modules/CheckoutModule'
 
 const Squares = dynamic(() => import('client/views/canvas/Squares'), {
   ssr: false,
 })
 
 const Home: NextPage = () => {
+  const dispatch = useAppDispatch()
   const [_showAuth, _setShowAuth] = useState<boolean>(false)
   const [_showCheckout, _setShowCheckout] = useState<boolean>(false)
 
@@ -30,6 +34,7 @@ const Home: NextPage = () => {
   const _cancelHandler = (e: SyntheticEvent<HTMLButtonElement>): void => {
     e.preventDefault()
     _setShowAuth(false)
+    dispatch(clear())
   }
 
   return (
@@ -69,9 +74,9 @@ const Home: NextPage = () => {
 
         <animated.div className={styles.actions} style={useSpring(animations.auth)}>
           <div className={styles.container}>
-            <button className="primary button" onClick={() => _setShowAuth(!_showAuth)}>
+            <Button color="primary" variant="contained" size="large" onClick={() => _setShowAuth(!_showAuth)}>
               Get Access
-            </button>
+            </Button>
           </div>
         </animated.div>
       </main>

@@ -11,6 +11,14 @@
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
+    "@emotion/react": "^11.7.0",
+    "@emotion/styled": "^11.6.0",
+    "@fontsource/mate-sc": "^4.5.0",
+    "@fontsource/material-icons": "^4.5.0",
+    "@fontsource/roboto": "^4.5.1",
+    "@mui/icons-material": "^5.2.0",
+    "@mui/lab": "^5.0.0-alpha.57",
+    "@mui/material": "^5.2.1",
     "@react-spring/konva": "^9.3.1",
     "@react-spring/web": "^9.3.1",
     "@reduxjs/toolkit": "^1.6.2",
@@ -19,7 +27,8 @@
     "konva": "^8.3.0",
     "react-konva": "^17.0.2-5",
     "react-redux": "^7.2.6",
-    "square": "^16.0.0"
+    "square": "^16.0.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@material-ui/core": "^4.12.3",
