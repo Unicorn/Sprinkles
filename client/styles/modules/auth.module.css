@@ -11,7 +11,7 @@
   align-items: center;
   align-content: center;
   justify-content: space-between;
-  background-color: var(--color-lightest);
+  background-color: #fff;
   box-shadow: 0 0 10vw rgba(0, 0, 0, 0.45), 2rem 2rem 0 rgba(0, 0, 0, 0.05), -2rem -2rem 0 rgba(0, 0, 0, 0.05);
   display: flex;
   flex-flow: column;
@@ -27,7 +27,7 @@
   flex-flow: row wrap;
   justify-content: space-between;
   max-width: 100rem;
-  padding: 5rem 4rem;
+  padding: 4rem;
   width: 100%;
 }
 
@@ -37,11 +37,11 @@
   flex-direction: column;
   justify-content: center;
   max-width: 50rem;
-  width: 45%;
+  width: 48%;
 }
 
 .license {
-  background: #fff;
+  background: var(--color-lighter);
   border: 1px solid var(--color-lighter);
   border-radius: 1rem;
   width: 100%;
@@ -49,7 +49,7 @@
 
 .header {
   align-items: baseline;
-  border-bottom: 1px solid var(--color-lighter);
+  border-bottom: 1px solid var(--color-light);
   display: flex;
   flex-flow: row nowrap;
   line-height: 1;
@@ -63,13 +63,17 @@
   display: block;
   font-family: var(--font-aside);
   font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
   padding: 0 0 0.4rem 0;
+  text-transform: uppercase;
 }
 
 .type {
   color: var(--color-dark);
   display: block;
   font-family: var(--font-body);
+  font-weight: 600;
   font-size: 1.4rem;
 }
 
@@ -82,14 +86,25 @@
 .exp {
   color: var(--color-dark);
   display: block;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 0.4rem;
   line-height: 1;
   padding: 1.5rem 0 0;
 }
 
 .num {
   color: var(--color-black);
-  font-size: 2.4rem;
+  font-size: 2.6rem;
+  padding-bottom: 1rem;
+}
+
+.dob strong,
+.exp strong {
+  display: inline-block;
+  font-family: monospace;
+  text-align: justify;
+  width: 8rem;
 }
 
 .footer {

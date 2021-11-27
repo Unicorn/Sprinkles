@@ -8,22 +8,33 @@ import dynamic from 'next/dynamic'
 import { animated, useSpring } from '@react-spring/web'
 
 import styles from '@/styles/pages/home.module.css'
-import animations from '@/styles/pages/home.animations'
-import HamburgerMenu from '@/views/ui/buttons/HamburgerMenu'
-import AuthModule from '@/views/modules/AuthModule'
+import animations from 'client/styles/pages/home.animations'
+import HamburgerMenu from 'client/views/ui/buttons/HamburgerMenu'
+import AuthModule from 'client/views/modules/AuthModule'
+import { SyntheticEvent } from 'react-transition-group/node_modules/@types/react'
 
-const Squares = dynamic(() => import('@/views/canvas/Squares'), {
+const Squares = dynamic(() => import('client/views/canvas/Squares'), {
   ssr: false,
 })
 
 const Home: NextPage = () => {
   const [_showAuth, _setShowAuth] = useState<boolean>(false)
 
+  const _confirmHandler = (e: SyntheticEvent<HTMLButtonElement>): void => {
+    e.preventDefault()
+    _setShowAuth(false)
+  }
+
+  const _cancelHandler = (e: SyntheticEvent<HTMLButtonElement>): void => {
+    e.preventDefault()
+    _setShowAuth(false)
+  }
+
   return (
     <>
       <Head>
-        <title>The Horn | Lake George Salon</title>
-        <meta name="description" content="A unicorn owned salon in Lake George Michigan. Book appointments online!" />
+        <title>The Mane | Lake George Grocery</title>
+        <meta name="description" content="A unicorn owned grocery and cafe in Lake George Michigan." />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preload" href="fonts/RousseauDeco-Bold.woff2" as="font" type="font/woff2" crossOrigin="crossOrigin" />
       </Head>
@@ -32,7 +43,7 @@ const Home: NextPage = () => {
         <HamburgerMenu />
       </header>
 
-      {_showAuth && <AuthModule />}
+      {_showAuth && <AuthModule confirmHandler={_confirmHandler} cancelHandler={_cancelHandler} />}
 
       <main className={styles.main}>
         <div className={styles.brand}>
@@ -41,19 +52,19 @@ const Home: NextPage = () => {
           </animated.div>
 
           <animated.div className={styles.intro} style={useSpring(animations.intro)}>
-            <animated.h1 className={styles.h1} style={useSpring(animations.h1)}>
-              THE MANE
-            </animated.h1>
+            <animated.p className={styles.title} style={useSpring(animations.title)}>
+              THE HORN
+            </animated.p>
 
-            <animated.h2 className={styles.h2} style={useSpring(animations.h2)}>
-              Hair Salon in Lake George, MI
-            </animated.h2>
+            <animated.p className={styles.slogan} style={useSpring(animations.slogan)}>
+              Welcome to our 24-hour cafe!
+            </animated.p>
           </animated.div>
         </div>
 
         <animated.div className={styles.actions} style={useSpring(animations.auth)}>
           <button className="primary button" onClick={() => _setShowAuth(!_showAuth)}>
-            Authenticate
+            Get Access
           </button>
         </animated.div>
       </main>

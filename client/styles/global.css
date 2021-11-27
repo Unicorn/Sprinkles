@@ -67,6 +67,8 @@ h1,
 h2 {
   color: var(--color-black);
   font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0.05em;
   margin: 0;
   padding: 0;
 }
@@ -80,7 +82,7 @@ h2 {
 }
 
 p {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   line-height: 1.65;
 }
 
@@ -175,11 +177,11 @@ main {
   border: none;
   color: #fff;
   cursor: pointer;
-  font-family: var(--font-condensed);
+  font-family: var(--font-body);
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1rem;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.05rem;
   padding: 2rem 4rem;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   text-transform: uppercase;

@@ -19,7 +19,7 @@ const animations = {
     delay: 2000,
   },
 
-  h1: {
+  title: {
     from: { opacity: 0, y: 0 },
     to: { opacity: 1, y: 10 },
     config: {
@@ -28,7 +28,7 @@ const animations = {
     delay: 2800,
   },
 
-  h2: {
+  slogan: {
     from: { opacity: 0 },
     to: { opacity: 1 },
     config: {
@@ -38,8 +38,8 @@ const animations = {
   },
 
   auth: {
-    from: { opacity: 0 },
-    to: { opacity: 1 },
+    from: { bottom: '-100rem', opacity: 0 },
+    to: { bottom: '0', opacity: 1 },
     config: {
       duration: 1500,
     },

@@ -16,7 +16,8 @@
     "electron-serve": "^1.1.0",
     "electron-store": "^8.0.1",
     "konva": "^8.3.0",
-    "react-konva": "^17.0.2-5"
+    "react-konva": "^17.0.2-5",
+    "square": "^16.0.0"
   },
   "devDependencies": {
     "@material-ui/core": "^4.12.3",

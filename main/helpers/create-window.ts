@@ -6,13 +6,13 @@ import Store from 'electron-store'
 export default (windowName: string, options: BrowserWindowConstructorOptions): BrowserWindow => {
   const key = 'window-state'
   const name = `window-state-${windowName}`
-  const store = new Store({ name })
+  const store = new Store()
   const defaultSize = {
     width: options.width,
     height: options.height,
   }
   let state = {}
-  let win
+  let win: BrowserWindow
 
   const restore = () => store.get(key, defaultSize)
 
@@ -27,7 +27,7 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
     }
   }
 
-  const windowWithinBounds = (windowState, bounds) => {
+  const windowWithinBounds = (windowState, bounds: Electron.Rectangle) => {
     return (
       windowState.x >= bounds.x &&
       windowState.y >= bounds.y &&
@@ -77,7 +77,7 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
   }
   win = new BrowserWindow(browserOptions)
 
-  win.setKiosk(true)
+  // win.setKiosk(true)
 
   win.on('close', saveState)
 

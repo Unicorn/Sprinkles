@@ -4,12 +4,15 @@ import React, { FC, SyntheticEvent, useState, useRef } from 'react'
 import { animated, useSpring } from '@react-spring/web'
 
 import styles from '@/styles/modules/auth.module.css'
-import { parseLicense, License } from '@/helpers/licenseParser'
-import useFocus from '@/helpers/reactHooks'
+import { parseLicense, License } from 'client/helpers/licenseParser'
+import useFocus from 'client/helpers/reactHooks'
 
-interface Props {}
+interface Props {
+  confirmHandler: (e: SyntheticEvent<HTMLButtonElement>) => void
+  cancelHandler: (e: SyntheticEvent<HTMLButtonElement>) => void
+}
 
-const AuthModule: FC<Props> = () => {
+const AuthModule: FC<Props> = ({ confirmHandler, cancelHandler }) => {
   const [_license, _setLicense] = useState<License | null>(null)
   const [_magData, _setMagData] = useState<string>('')
   const [_inputRef, _setInputFocus] = useFocus()
@@ -28,14 +31,8 @@ const AuthModule: FC<Props> = () => {
           </h2>
 
           <animated.div className="help info">
-            <p>
-              Whether you have an active membership or if you want to purchase a day pass, we will need to verify your identity using your
-              state-issued ID.
-            </p>
-            <p>
-              We do not resell or maliciously use your personal data. Your license number is used as a unique identifier so that we can
-              retrieve your membership information.
-            </p>
+            <p>If you have an active membership or want a day pass, we will need to verify your identity using your state-issued ID.</p>
+            <p>We do not share your personal data. Your license is used as a unique identifier for membership and payment processing.</p>
           </animated.div>
         </div>
 
@@ -62,22 +59,31 @@ const AuthModule: FC<Props> = () => {
                   : 'XXX XXX XXX XXX'}
               </span>
               <span className={styles.dob}>
-                DOB: {_license?.dob ? `${_license.dob.month}/${_license.dob.day}/${_license.dob.year}` : 'XX/XX/XXXX'}
+                <strong>DOB:</strong> {_license?.dob ? `${_license.dob.month}/${_license.dob.day}/${_license.dob.year}` : 'XX/XX/XXXX'}
               </span>
               <span className={styles.exp}>
-                EXP: {_license?.exp ? `${_license.exp.month}/${_license.exp.day}/${_license.exp.year}` : 'XX/XX/XXXX'}
+                <strong>EXP:</strong> {_license?.exp ? `${_license.exp.month}/${_license.exp.day}/${_license.exp.year}` : 'XX/XX/XXXX'}
               </span>
             </div>
           </div>
         </div>
       </div>
 
-      <animated.footer className={styles.footer} style={useSpring({ opacity: _license?.num ? 1 : 0 })}>
+      <footer className={styles.footer}>
         <div className={styles.container}>
-          <button className="action confirm">Confirm</button>
-          <button className="action cancel">Cancel</button>
+          <animated.button
+            className="action confirm"
+            disabled={!_license?.num}
+            style={useSpring({ opacity: _license?.num ? 1 : 0 })}
+            onClick={confirmHandler}
+          >
+            Confirm
+          </animated.button>
+          <button className="action cancel" onClick={cancelHandler}>
+            Cancel
+          </button>
         </div>
-      </animated.footer>
+      </footer>
     </div>
   )
 }
