@@ -1,0 +1,14 @@
+# @format
+
+appId: love.unicorn.horn
+productName: The Horn
+copyright: Copyright © 2021 Clay Unicorn
+directories:
+  output: dist
+  buildResources: resources
+files:
+  - from: .
+    filter:
+      - package.json
+      - app
+publish: null
