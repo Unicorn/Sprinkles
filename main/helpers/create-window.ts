@@ -3,6 +3,8 @@
 import { screen, BrowserWindow, BrowserWindowConstructorOptions } from 'electron'
 import Store from 'electron-store'
 
+const isProd: boolean = process.env.NODE_ENV === 'production'
+
 export default (windowName: string, options: BrowserWindowConstructorOptions): BrowserWindow => {
   const key = 'window-state'
   const name = `window-state-${windowName}`
@@ -77,7 +79,9 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
   }
   win = new BrowserWindow(browserOptions)
 
-  win.setKiosk(true)
+  if (isProd) {
+    win.setKiosk(true)
+  }
 
   win.on('close', saveState)
 
