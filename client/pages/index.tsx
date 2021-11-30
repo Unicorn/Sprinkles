@@ -16,6 +16,7 @@ import { useBlink } from '@/helpers/blinkHooks'
 import HamburgerMenu from '@/views/ui/buttons/HamburgerMenu'
 import AuthModule from '@/views/modules/AuthModule'
 import CheckoutModule from '@/views/modules/CheckoutModule'
+import Logo from '@/views/graphics/Logo'
 
 const Squares = dynamic(() => import('client/views/canvas/Squares'), {
   ssr: false,
@@ -70,12 +71,12 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <div className={styles.brand}>
           <animated.div className={styles.logo} style={useSpring(animations.logo)}>
-            <img src="/images/logo.svg" alt="A unicorn featuring a gorgeous and long mane" width="360" height="288" />
+            <Logo />
           </animated.div>
 
           <animated.div className={styles.intro} style={useSpring(animations.intro)}>
             <animated.p className={styles.title} style={useSpring(animations.title)}>
-              THE HORN
+              The Horn
             </animated.p>
 
             <animated.p className={styles.slogan} style={useSpring(animations.slogan)}>

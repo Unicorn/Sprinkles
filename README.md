@@ -1,18 +1,27 @@
+<!-- @format -->
+
 <p align="center"><img src="https://i.imgur.com/flcMvDC.png"></p>
 
-## Usage
+## Building for Pi
 
-### Create an App
+Download and install Raspbian Lite. In contrast to Raspian Desktop, Raspian Lite has no desktop environment preinstalled and is generally much lighter and smaller in size.
+
+Boot up the Raspberry Pi, login as user pi with password raspberry, then start sudo raspi-config to apply some initial customizations:
+
+- Localisation Options: Select your preferred locale, timezone, and keyboard layout.
+- Change User Password: the default password is dangerous!!
+- Network Options: Configure WiFi as needed
+- Boot Options: Select "Desktop / CLI" and then "Console Autologin"
+- Interfacing Options: Enable SSH access if needed.
+
+Install dependencies for a simple single-window GUI
 
 ```
-# with npx
-$ npx create-nextron-app my-app --example with-typescript-material-ui
+sudo apt-get install --no-install-recommends xserver-xorg x11-xserver-utils xinit
+```
 
-# with yarn
-$ yarn create nextron-app my-app --example with-typescript-material-ui
-
-# with pnpx
-$ pnpx create-nextron-app my-app --example with-typescript-material-ui
+```
+startx /home/pi/horn/dist/Horn.AppImage -- -nocursor
 ```
 
 ### Install Dependencies

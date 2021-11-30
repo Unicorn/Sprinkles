@@ -62,17 +62,17 @@
   max-width: 80rem;
 }
 
-@media (max-width: 800px) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 800px) {
   .main {
-    padding: 8rem 0;
+    padding: 8rem 0 0;
   }
 
   .logo {
-    max-width: 13rem;
+    max-width: 10rem;
   }
 
   .intro {
-    padding: 0 0 0 1rem;
+    padding: 0 0 0 2rem;
   }
 
   .title {
