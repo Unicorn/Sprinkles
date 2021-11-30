@@ -41,6 +41,8 @@
     "electron": "^16.0.2",
     "electron-builder": "^22.11.7",
     "electron-devtools-installer": "^3.2.0",
+    "eslint": "8.3.0",
+    "eslint-config-next": "12.0.4",
     "next": "^12.0.4",
     "nextron": "^7.1.0",
     "react": "^17.0.2",

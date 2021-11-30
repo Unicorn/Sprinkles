@@ -1,8 +1,10 @@
 # @format
 
 appId: love.unicorn.horn
-productName: The Horn
 copyright: Copyright © 2021 Clay Unicorn
+productName: Horn
+artifactName: ${productName}.${ext}
+compression: normal
 directories:
   output: dist
   buildResources: resources
@@ -12,6 +14,9 @@ files:
       - package.json
       - app
 publish: null
+mac:
+  category: public.app-category.productivity
+  darkModeSupport: true
 linux:
   category: Office
-  compression: store
+  packageCategory: Office
