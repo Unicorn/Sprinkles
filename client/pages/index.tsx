@@ -3,7 +3,6 @@
 import React, { useState, SyntheticEvent, useEffect } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import { animated, useSpring } from '@react-spring/web'
 import { Button } from '@mui/material'
@@ -50,6 +49,10 @@ const Home: NextPage = () => {
     _setShowCheckout(false)
   }
 
+  const _captureUser = (): void => {
+    alert(process && process.arch && process.platform ? `${process.platform} - ${process.arch}` : 'Not Supported')
+  }
+
   return (
     <>
       <Head>
@@ -71,7 +74,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <div className={styles.brand}>
           <animated.div className={styles.logo} style={useSpring(animations.logo)}>
-            <Logo />
+            {/* <Logo /> */}
           </animated.div>
 
           <animated.div className={styles.intro} style={useSpring(animations.intro)}>
@@ -88,7 +91,10 @@ const Home: NextPage = () => {
         <animated.div className={styles.actions} style={useSpring(animations.auth)}>
           <div className={styles.container}>
             <Button color="primary" variant="contained" size="large" onClick={() => _setShowAuth(!_showAuth)}>
-              Get Access
+              I'm new here
+            </Button>
+            <Button color="secondary" variant="contained" size="large" onClick={_captureUser}>
+              Capture
             </Button>
           </div>
         </animated.div>

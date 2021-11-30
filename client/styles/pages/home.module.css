@@ -62,7 +62,7 @@
   max-width: 80rem;
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1000px) {
+@media (max-width: 1200px) {
   .main {
     padding: 8rem 0 0;
   }

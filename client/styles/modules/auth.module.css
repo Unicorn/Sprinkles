@@ -134,7 +134,7 @@
   width: 100%;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1200px) {
   .modal {
     height: 100%;
     margin: 0 auto;

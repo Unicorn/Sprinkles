@@ -5432,6 +5432,11 @@ pend@~1.2.0:
   resolved "https://registry.yarnpkg.com/pend/-/pend-1.2.0.tgz#7a57eb550a6783f9115331fcf4663d5c8e007a50"
   integrity sha1-elfrVQpng/kRUzH89GY9XI4AelA=
 
+pi-camera@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/pi-camera/-/pi-camera-1.6.0.tgz#24c8e2ed96d518e4b2544b8225a65312541a706e"
+  integrity sha512-WrnJ4R1X/5qA5/vXeou/Ty97c7urrnla03j5FhctF9nZy1lXnfYkPOsL+qDZAZcvg40cbkTE217WlHNnMMftaw==
+
 picocolors@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
