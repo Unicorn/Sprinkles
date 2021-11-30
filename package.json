@@ -18,8 +18,8 @@
     "@fontsource/roboto": "^4.5.1",
     "@microblink/blinkid-in-browser-sdk": "^5.14.2",
     "@mui/icons-material": "^5.2.0",
-    "@mui/lab": "^5.0.0-alpha.57",
-    "@mui/material": "^5.2.1",
+    "@mui/lab": "^5.0.0-alpha.58",
+    "@mui/material": "^5.2.2",
     "@react-spring/konva": "^9.3.1",
     "@react-spring/web": "^9.3.1",
     "@reduxjs/toolkit": "^1.6.2",
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@material-ui/core": "^4.12.3",
-    "@types/node": "^16.11.10",
+    "@types/node": "^16.11.11",
     "@types/react": "^17.0.37",
     "electron": "^16.0.2",
     "electron-builder": "^22.11.7",
@@ -43,6 +43,6 @@
     "nextron": "^7.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "typescript": "^4.4.3"
+    "typescript": "^4.6.0-dev.20211126"
   }
 }

@@ -2,7 +2,6 @@
 
 import { FC, SyntheticEvent } from 'react'
 import { animated, useSpring } from '@react-spring/web'
-import Image from 'next/image'
 import { Button } from '@mui/material'
 
 import styles from '@/styles/modules/auth.module.css'
@@ -35,7 +34,7 @@ const CheckoutModule: FC<Props> = ({ confirmHandler, cancelHandler }) => {
         </div>
 
         <div className={styles.right}>
-          <Image src="/images/sq-subscription-basic.png" alt="A unicorn featuring a gorgeous and long mane" width="200" height="200" />
+          <img src="/images/sq-subscription-basic.png" alt="A unicorn featuring a gorgeous and long mane" width="200" height="200" />
         </div>
       </div>
 

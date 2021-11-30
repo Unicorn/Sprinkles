@@ -70,7 +70,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <div className={styles.brand}>
           <animated.div className={styles.logo} style={useSpring(animations.logo)}>
-            <Image src="/images/logo.svg" alt="A unicorn featuring a gorgeous and long mane" width="360" height="288" />
+            <img src="/images/logo.svg" alt="A unicorn featuring a gorgeous and long mane" width="360" height="288" />
           </animated.div>
 
           <animated.div className={styles.intro} style={useSpring(animations.intro)}>

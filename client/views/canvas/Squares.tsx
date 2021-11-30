@@ -1,10 +1,12 @@
 /** @format */
 
 import React from 'react'
-import { Stage, Layer } from 'react-konva'
-import { Spring, animated } from '@react-spring/konva'
+import { Stage, Layer, KonvaNodeComponent } from 'react-konva'
+import { Spring, animated, SpringComponentProps } from '@react-spring/konva'
 
 import { colors } from 'client/constants/theme'
+import { AnimatedComponent } from '@react-spring/web'
+import { Rect, RectConfig } from 'konva/lib/shapes/Rect'
 
 const sq1 = {
   loop: { reverse: true },
@@ -56,15 +58,17 @@ const sq5 = {
   delay: 1000,
 }
 
+const square = (props: object): JSX.Element => <animated.Rect {...props} />
+
 const Squares = () => {
   return (
     <Stage className="canvas" width={window.innerWidth} height={window.innerHeight}>
       <Layer>
-        <Spring {...sq1}>{props => <animated.Rect {...props} />}</Spring>
-        <Spring {...sq2}>{props => <animated.Rect {...props} />}</Spring>
-        <Spring {...sq3}>{props => <animated.Rect {...props} />}</Spring>
-        <Spring {...sq4}>{props => <animated.Rect {...props} />}</Spring>
-        <Spring {...sq5}>{props => <animated.Rect {...props} />}</Spring>
+        <Spring {...sq1}>{square}</Spring>
+        <Spring {...sq2}>{square}</Spring>
+        <Spring {...sq3}>{square}</Spring>
+        <Spring {...sq4}>{square}</Spring>
+        <Spring {...sq5}>{square}</Spring>
       </Layer>
     </Stage>
   )
