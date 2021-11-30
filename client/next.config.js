@@ -20,8 +20,8 @@ module.exports = {
   // The better approach later, will be to check electron vs web rendering and set config accordingly
   webpack: (config, { isServer }) => {
     if (!isServer) {
-      // config.target = 'electron-renderer'
-      config.output.globalObject = 'window'
+      config.target = 'electron-renderer'
+      // config.output.globalObject = 'window'
     }
 
     return config

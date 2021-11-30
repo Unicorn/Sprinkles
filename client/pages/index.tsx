@@ -74,7 +74,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <div className={styles.brand}>
           <animated.div className={styles.logo} style={useSpring(animations.logo)}>
-            {/* <Logo /> */}
+            <Logo />
           </animated.div>
 
           <animated.div className={styles.intro} style={useSpring(animations.intro)}>
@@ -91,10 +91,10 @@ const Home: NextPage = () => {
         <animated.div className={styles.actions} style={useSpring(animations.auth)}>
           <div className={styles.container}>
             <Button color="primary" variant="contained" size="large" onClick={() => _setShowAuth(!_showAuth)}>
-              I'm new here
+              Register
             </Button>
             <Button color="secondary" variant="contained" size="large" onClick={_captureUser}>
-              Capture
+              Login
             </Button>
           </div>
         </animated.div>

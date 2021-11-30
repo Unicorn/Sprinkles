@@ -30,6 +30,8 @@
   --font-aside: 'Mate SC', serif;
 
   --nav-height: 6.25rem;
+
+  --spacing-500: 2rem;
 }
 
 @font-face {
@@ -88,7 +90,6 @@ a {
 }
 
 main {
-  padding: 5rem 0 0;
   position: relative;
   z-index: 5;
 }
@@ -106,7 +107,7 @@ main {
   display: flex;
   height: var(--nav-height);
   left: 0;
-  padding: 0 2rem;
+  padding: 0 var(--spacing-500);
   position: fixed;
   right: 0;
   top: 0;

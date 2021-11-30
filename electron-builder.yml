@@ -20,3 +20,4 @@ mac:
 linux:
   category: Office
   packageCategory: Office
+  target: AppImage
