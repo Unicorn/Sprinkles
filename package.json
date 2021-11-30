@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "nextron",
     "build": "nextron build",
+    "build:all": "nextron build --all",
+    "build:pi": "nextron build --armv7l",
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
