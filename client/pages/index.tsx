@@ -16,6 +16,7 @@ import HamburgerMenu from '@/views/ui/buttons/HamburgerMenu'
 import AuthModule from '@/views/modules/AuthModule'
 import CheckoutModule from '@/views/modules/CheckoutModule'
 import Logo from '@/views/graphics/Logo'
+import Camera from '@/modules/camera'
 
 const Squares = dynamic(() => import('client/views/canvas/Squares'), {
   ssr: false,
@@ -51,6 +52,25 @@ const Home: NextPage = () => {
 
   const _captureUser = (): void => {
     alert(process && process.arch && process.platform ? `${process.platform} - ${process.arch}` : 'Not Supported')
+
+    const cam = new Camera({
+      mode: 'photo',
+      output: `${__dirname}/test.jpg`,
+      width: 640,
+      height: 480,
+      nopreview: true,
+    })
+
+    cam
+      .snap()
+      .then(result => {
+        // Your picture was captured
+        alert('pic captured')
+      })
+      .catch(error => {
+        // Handle your error
+        alert('pic failed')
+      })
   }
 
   return (

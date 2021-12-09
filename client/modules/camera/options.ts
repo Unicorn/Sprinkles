@@ -1,0 +1,25 @@
+/** @format */
+
+export default [
+  'output',
+  'width',
+  'height',
+  'quality',
+  'latest',
+  'timeout',
+  'thumb',
+  'demo',
+  'encoding',
+  'timelapse',
+  'framerate',
+  'rotation',
+  'preview',
+  'opacity',
+  'annotate',
+  'exif',
+  'brightness',
+  'contrast',
+  'shutter',
+  'saturation',
+  'roi',
+]
